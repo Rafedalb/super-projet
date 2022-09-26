@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Distributeur de pains</title>
+	<meta charset="UTF-8" />
+	<style>
+		body {
+			background-color: lightblue;
+		}
+
+		img {
+			width: 100px;
+			height: 80px;
+		}
+	</style>
+</head>
+
+<body id="body">
+	<p>Veuillez choisir combien de pain(s) vous souhaitez distribuer :</p>
+	<input type="number" min="1" max="100000" value="10" id="nbpains" />
+	<input type="button" value="Distribuer" id="Distribuer" onclick="CalculBaguette()"/>
+	<br />
+	<div id="distribution">
+	</div>
+		<script>
+		
+			function CalculBaguette(){
+			var distribution = document.getElementById("distribution");
+			var result = document.getElementById("nbpains").value;
+			var camion = 0;
+			var panier = 0;
+			var baguette = 0;
+			distribution.innerHTML = "";
+				for(i = result; i>0;){
+					if(i >=16){
+						camion +=1
+						i -=16;
+					}
+					else if(i >=4){
+						panier+=1;
+						i -=4;
+					}
+					else if(i >=1){
+						baguette+=1;
+						i-=1;
+					}
+				}
+				for(i=1; i<=camion;i++){
+				var img = document.createElement("img");
+				img.src = "camionette.png";
+				distribution.appendChild(img);
+				}
+				for(i=1; i<=panier;i++){
+				var img = document.createElement("img");
+				img.src = "panier.png";
+				distribution.appendChild(img);
+				}
+				for(i=1; i<=baguette;i++){
+				var img = document.createElement("img");
+				img.src = "pain.png";
+				distribution.appendChild(img);
+				}
+			}
+		</script>
+</body>
+
+</html>
